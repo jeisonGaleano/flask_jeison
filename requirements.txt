@@ -1,0 +1,15 @@
+blinker
+click
+colorama
+Flask
+Flask-Cors
+gunicorn
+importlib-metadata
+itsdangerous
+Jinja2
+MarkupSafe
+six
+Werkzeug
+zipp
+psycopg2
+python-decouple
