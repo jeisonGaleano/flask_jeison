@@ -41,7 +41,7 @@ def add_data():
         print(affected_rows)
 
         if affected_rows == 1:
-            return jsonify(cmc)
+            return jsonify(cmc.edad_esposa)
         else:
             return jsonify({'message': "Error on insert"}), 500
 
@@ -74,7 +74,7 @@ def add_data_pqr():
         print(affected_rows)
 
         if affected_rows == 1:
-            return jsonify(peticiones)
+            return jsonify(peticiones.usuario)
         else:
             return jsonify({'message': "Error on insert"}), 500
 
