@@ -30,9 +30,11 @@ class CmcModel():
 
             with connection.cursor() as cursor:
                 cursor.execute("""INSERT INTO public.cmc
-                                    ("Edad_esposa", educ_de_la_esposa, educ_del_esposo, num_de_hijos_nacidos, religion_de_la_esposa, la_esposa_trabaja_ahora, ocupa_del_esposo, indice_de_nivel_de_vida, exposicion_a_los_medios, metodo_anticonceptivo_utilizado)
-                                    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""", (cmc.Edad_esposa, cmc.educ_de_la_esposa, cmc.educ_del_esposo, cmc.num_de_hijos_nacidos
-                                    , cmc.religion_de_la_esposa, cmc.la_esposa_trabaja_ahora, cmc.indice_de_nivel_de_vida, cmc.exposicion_a_los_medios, cmc.metodo_anticonceptivo_utilizado))
+                                    (edad_esposa, educ_de_la_esposa, educ_del_esposo, num_de_hijos_nacidos, religion_de_la_esposa, 
+                                    la_esposa_trabaja_ahora, ocupa_del_esposo, indice_de_nivel_de_vida, exposicion_a_los_medios, 
+                                    metodo_anticonceptivo_utilizado)
+                                    VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s);""", (cmc.edad_esposa, cmc.educ_de_la_esposa, cmc.educ_del_esposo, cmc.num_de_hijos_nacidos
+                                    , cmc.religion_de_la_esposa, cmc.la_esposa_trabaja_ahora, cmc.ocupa_del_esposo, cmc.indice_de_nivel_de_vida, cmc.exposicion_a_los_medios, cmc.metodo_anticonceptivo_utilizado))
                 affected_rows = cursor.rowcount
                 connection.commit()
 

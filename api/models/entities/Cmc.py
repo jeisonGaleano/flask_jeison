@@ -1,11 +1,11 @@
 class Cmc():
 
 
-    def __init__(self, Edad_esposa = None, educ_de_la_esposa = None,
+    def __init__(self, edad_esposa = None, educ_de_la_esposa = None,
                     educ_del_esposo  = None, num_de_hijos_nacidos  = None, religion_de_la_esposa  = None,
                     la_esposa_trabaja_ahora = None , ocupa_del_esposo = None, indice_de_nivel_de_vida = None,
                     exposicion_a_los_medios = None, metodo_anticonceptivo_utilizado = None) -> None:
-        self.Edad_esposa = Edad_esposa
+        self.edad_esposa = edad_esposa
         self.educ_de_la_esposa = educ_de_la_esposa
         self.educ_del_esposo = educ_del_esposo
         self.num_de_hijos_nacidos = num_de_hijos_nacidos
@@ -18,7 +18,7 @@ class Cmc():
 
     def to_JSON(self):
         return {
-            'Edad_esposa': self.Edad_esposa,
+            'edad_esposa': self.edad_esposa,
             'educ_de_la_esposa': self.educ_de_la_esposa,
             'educ_del_esposo': self.educ_del_esposo,
             'num_de_hijos_nacidos': self.num_de_hijos_nacidos,
