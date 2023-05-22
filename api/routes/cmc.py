@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, current_app
 
 from api.models.entities.Cmc import Cmc
+from api.models.entities.PeticionesPqr import PeticionesPqr
 from api.models.CmcModel import CmcModel
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
@@ -49,14 +50,43 @@ def add_data():
         return jsonify({'message': str(ex)}), 500   
     
 @cmc.route('/api/v1/algorithm', methods=['GET'])
-def get_all():
+def get_all_algorithm():
 
     try:            
         chevrolet = CmcModel.get_data_cmc()
-        y = chevrolet[0]
         
+        return jsonify(chevrolet)
+    except Exception as ex:
+        return jsonify({'message': str(ex)}), 500 
+
+@cmc.route('/api/v1/add/pqr', methods=['POST'])
+def add_data_pqr():
+
+    try:
+        requestData = request.json[0];
+        usuario = requestData['usuario']
+        correo = requestData['correo']
+        mensaje = requestData['mensaje']
+
+        peticiones = PeticionesPqr(usuario, correo, mensaje)
         
-        
+        affected_rows = CmcModel.add_data_peticiones(peticiones)
+        print(affected_rows)
+
+        if affected_rows == 1:
+            return jsonify(peticiones)
+        else:
+            return jsonify({'message': "Error on insert"}), 500
+
+    except Exception as ex:
+        print("ex")
+        return jsonify({'message': str(ex)}), 500   
+    
+@cmc.route('/api/v1/pqr', methods=['GET'])
+def get_all_pqr():
+
+    try:            
+        chevrolet = CmcModel.get_data_pqr()
         return jsonify(chevrolet)
     except Exception as ex:
         return jsonify({'message': str(ex)}), 500 

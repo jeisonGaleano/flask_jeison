@@ -1,5 +1,6 @@
 from api.database.db import get_connection
 from .entities.Cmc import Cmc
+from .entities.PeticionesPqr import PeticionesPqr
 
 class CmcModel():
     
@@ -40,5 +41,41 @@ class CmcModel():
 
             connection.close()
             return affected_rows
+        except Exception as ex:
+            raise Exception(ex)
+        
+    @classmethod
+    def add_data_peticiones(self, pqr):
+        try:
+            connection = get_connection()
+
+            with connection.cursor() as cursor:
+                cursor.execute("""INSERT INTO public.peticiones_pqr
+                                    (usuario, correo, mensaje)
+                                    VALUES(%s, %s, %s);""", (pqr.usuario, pqr.correo, pqr.mensaje))
+                affected_rows = cursor.rowcount
+                connection.commit()
+
+            connection.close()
+            return affected_rows
+        except Exception as ex:
+            raise Exception(ex)
+    
+    @classmethod
+    def get_data_pqr(self):
+        try:
+            connection = get_connection()
+            pqrList = []
+
+            with connection.cursor() as cursor:
+                cursor.execute("select usuario, correo, mensaje from peticiones_pqr")
+                resultset = cursor.fetchall()
+
+                for row in resultset:
+                    peticionesPqr = PeticionesPqr(row[0], row[1], row[2])
+                    pqrList.append(peticionesPqr.to_JSON())
+
+            connection.close()
+            return pqrList
         except Exception as ex:
             raise Exception(ex)
