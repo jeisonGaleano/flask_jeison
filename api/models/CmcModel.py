@@ -11,7 +11,7 @@ class CmcModel():
             cmcList = []
 
             with connection.cursor() as cursor:
-                cursor.execute("select \"Edad_esposa\" , educ_de_la_esposa ,educ_del_esposo,  num_de_hijos_nacidos ,     religion_de_la_esposa , la_esposa_trabaja_ahora ,ocupa_del_esposo , indice_de_nivel_de_vida , exposicion_a_los_medios , metodo_anticonceptivo_utilizado  from cmc")
+                cursor.execute("select edad_esposa , educ_de_la_esposa ,educ_del_esposo,  num_de_hijos_nacidos ,     religion_de_la_esposa , la_esposa_trabaja_ahora ,ocupa_del_esposo , indice_de_nivel_de_vida , exposicion_a_los_medios , metodo_anticonceptivo_utilizado  from cmc")
                 resultset = cursor.fetchall()
 
                 for row in resultset:
