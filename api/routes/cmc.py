@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify, current_app
 
 from api.models.entities.Cmc import Cmc
 from api.models.CmcModel import CmcModel
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
 
 cmc = Blueprint('cmc', __name__)
 
@@ -45,3 +47,16 @@ def add_data():
     except Exception as ex:
         print("ex")
         return jsonify({'message': str(ex)}), 500   
+    
+@cmc.route('/api/v1/algorithm', methods=['GET'])
+def get_all():
+
+    try:            
+        chevrolet = CmcModel.get_data_cmc()
+        y = chevrolet[0]
+        
+        
+        
+        return jsonify(chevrolet)
+    except Exception as ex:
+        return jsonify({'message': str(ex)}), 500 

@@ -13,3 +13,4 @@ Werkzeug
 zipp
 psycopg2
 python-decouple
+scikit-learn
