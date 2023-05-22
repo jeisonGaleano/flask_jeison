@@ -80,7 +80,8 @@ def add_data_pqr():
 
     except Exception as ex:
         print("ex")
-        return jsonify({'message': str(ex)}), 500   
+        return jsonify({'message': str(ex)}), 500       
+    
     
 @cmc.route('/api/v1/pqr', methods=['GET'])
 def get_all_pqr():

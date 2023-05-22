@@ -1,7 +1,7 @@
 class Cmc():
 
 
-    def __init__(self, edad_esposa = None, educ_de_la_esposa = None,
+    def __init__(self, edad_esposa, educ_de_la_esposa = None,
                     educ_del_esposo  = None, num_de_hijos_nacidos  = None, religion_de_la_esposa  = None,
                     la_esposa_trabaja_ahora = None , ocupa_del_esposo = None, indice_de_nivel_de_vida = None,
                     exposicion_a_los_medios = None, metodo_anticonceptivo_utilizado = None) -> None:

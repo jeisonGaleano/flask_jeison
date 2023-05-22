@@ -1,6 +1,6 @@
 class PeticionesPqr():
 
-    def __init__(self, usuario = None, correo = None, mensaje = None) -> None:
+    def __init__(self, usuario, correo = None, mensaje = None) -> None:
         self.usuario = usuario
         self.correo = correo
         self.mensaje=mensaje
